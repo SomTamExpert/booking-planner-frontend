@@ -1,0 +1,64 @@
+<div>
+  <div class="submit-form">
+    <h4>Add a new Booking</h4>
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Enter a title for your booking</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="booking.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label>Select a start date and time:</label>
+        <div class="form-check form-switch form-group">
+          <input
+            type="datetime-local"
+            class="form-check-input"
+            id="startDate"
+            [(ngModel)]="bookingDate.startDateTime"
+            name="startDate"
+          />
+          <label class="form-check-label"
+                 for="startDate">Start Date</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Select an end date and time:</label>
+        <div class="form-check form-switch form-group">
+          <input
+            type="datetime-local"
+            class="form-check-input"
+            id="endDate"
+            [(ngModel)]="bookingDate.endDateTime"
+            name="endDate"
+          />
+          <label class="form-check-label"
+                 for="endDate">End Date</label>
+        </div>
+      </div>
+      <div *ngIf="bookingDates.length != 0 " class="form-group">
+        <label>Chosen Booking Dates:</label>
+        <div class = " form-group form-check form-switch" >
+        <li
+
+          *ngFor="let booking of bookingDates; let i = index"
+        >
+          {{ booking.startDateTime + ' - ' + booking.endDateTime }}
+        </li>
+        </div>
+      </div>
+
+      <button (click)="addBookingDates()" class="btn text-white bg-dark mt-3">Add date</button>
+      <button (click)="saveBooking()" class="btn text-white bg-dark mt-3 ml-1">Submit</button>
+      <div *ngIf="submitted">
+        <h4>Booking was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newBooking()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
