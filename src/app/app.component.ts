@@ -1,7 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {StorageService} from "./services/storage.service";
-import {BookingService} from "./services/booking.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
