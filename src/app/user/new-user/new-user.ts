@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user.model";
 import {AuthService} from "../../services/auth.service";
+import {Roles} from "../../models/role.enum";
 
 @Component({
   selector: 'app-user-login',
@@ -26,7 +27,8 @@ export class NewUser implements OnInit {
       age: this.user.age,
       username: this.user.username,
       password: this.user.password,
-      email: this.user.email
+      email: this.user.email,
+      role: Roles.MEMBER,
     };
     this.authService.register(data)
       .subscribe(
